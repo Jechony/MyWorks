@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Clock</title>
+    <style>
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#timer div {
+    margin: 0 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div id="timer">
+        <div id="days">00</div>
+        <div>:</div>
+        <div id="hours">00</div>
+        <div>:</div>
+        <div id="minutes">00</div>
+        <div>:</div>
+        <div id="seconds">00</div>
+    </div>
+    <script>
+    
+const targetDate = new Date("2024-12-31T00:00:00");
+
+const countdown = document.getElementById("timer");
+
+const updateTime = () => {
+  const now = new Date().getTime();
+  const timeDifference = targetDate - now;
+
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  countdown.innerHTML = `
+    <div id="days">${days.toString().padStart(2, "0")}</div>
+    <div>:</div>
+    <div id="hours">${hours.toString().padStart(2, "0")}</div>
+    <div>:</div>
+    <div id="minutes">${minutes.toString().padStart(2, "0")}</div>
+    <div>:</div>
+    <div id="seconds">${seconds.toString().padStart(2, "0")}</div>
+  `;
+
+  if (timeDifference < 0) {
+    clearInterval(interval);
+    countdown.innerHTML = "Countdown Expired";
+  }
+};
+
+const interval = setInterval(updateTime, 1000);
+
+updateTime();
+    </script>
+</body>
+</html>
+
+
+
