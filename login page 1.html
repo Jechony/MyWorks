@@ -1,0 +1,97 @@
+3<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Login page 1</title>
+</head>
+<body>
+  <style>
+  *{Margin: 0;
+  padding: 0;
+}
+
+body{height:100vh;
+  display:grid;
+  place-content:center;
+}
+
+
+#container{border-top: 10px solid #04AA6D;
+  border-right: 10px solid #04AA6D;
+  border-bottom: 50px solid #04AA6D;
+  border-left: 10px solid #04AA6D;
+  height:500px;
+  width:350px;
+  box-sizing:border-box;
+  padding:15px;
+}
+
+#img-container{
+  text-align:center;
+  margin:5px 0;
+}
+
+img.avatar{width:50%;
+  border-radius:50%;
+}
+
+input[type=text], input[type:password]{
+  margin:10px 0;
+  font-size:13px;
+  padding-left: 6px;
+  width:300px;
+  height:30px;
+  outline:none;
+  border:1px solid #04AA6D;
+}
+
+input:hover{border:2px solid #04AA6D;
+}
+
+label{font-size:20px}
+
+button{margin:10px 0;
+  width:310px;
+  height:40px;
+  font-size:20px;
+  border:none;
+  cursor:pointer;
+  background-color:#04AA6D;
+  color:white;
+}
+
+button:hover{
+  background-color:white;
+  transition:1.5s;}
+  
+button:active{color:green;
+  Background-color:orange;
+}
+  </style>
+
+  <div id="container">
+    <form action="method=">
+      <div id ="img-container">
+    <img src="IMG_0650.jpeg" alt="avatar" class="avatar">
+  </div>
+  
+  <div class="input-field">
+    <label for="name"><b>Username</b></label>
+    <input type ="text" id="name"
+     placeholder="Enter username" required><br><br>
+    
+    <label for="password"><b>Password</b></label>
+    <input type ="password" id="password"
+     placeholder="Enter Password" required>
+  </div>
+  
+  <div class="Btn">
+    <button type="submit">login</button>
+  </div>
+  
+  <label><input type="checkbox" Checked="checked" name="remember"><b>Remember me</b></label>
+    </form>
+  </div>
+</body>
+</html>

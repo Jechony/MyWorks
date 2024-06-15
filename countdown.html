@@ -1,0 +1,85 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown</title>
+
+<Style>
+body{
+    background-color: #6674ffb6;
+    font-size: 30px;
+    margin:0px;
+}
+h1{
+    Text-align:center;
+}
+
+#box{
+    display:flex;
+    justify-content:center;
+    border: 1px solid black;
+    }
+    
+#zero{
+    display:flex;
+    justify-content:center;
+    
+}
+
+button{
+    width:120px;
+    height:50px;
+}
+
+#reducebtn:active{
+    color:white;
+    background-color:Red;
+    font-size:20px;
+}
+#increasebtn:active {
+    color:white;
+    background-color:Green;
+    font-size:20px;
+}
+#resetbtn:active {
+    color:white;
+    background-color:Gray;
+    font-size:20px;
+}
+    
+    
+</Style>
+</head>
+
+<Body>
+<h1>COUNTDOWN</h1>
+
+<label id="zero"> 0 </label><br>
+
+<div id="box">
+<button id="reducebtn">Decrease</button>
+<button id="resetbtn">Reset</button>
+<button id="increasebtn">Increase</button>
+</div>
+
+<script>
+let counting=0;
+
+document.getElementById("reducebtn").onclick = function(){
+    counting-=1;
+    document.getElementById("zero").InnerHTML = counting;
+}
+
+document.getElementById("resetbtn").onclick = function(){
+    counting=0;
+    document.getElementById("zero").InnerHTML = counting;
+}
+
+document.getElementById("increasebtn").onclick = function(){
+    counting+=1;
+    document.getElementById("zero").InnerHTML = counting;
+}
+</script>
+
+</Body>
