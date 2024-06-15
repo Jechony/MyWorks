@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+  <style>
+body{
+    background-color:Gray;
+}
+
+.stopwatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  font-family: sans-serif;
+  border: 5px solid Black;
+  border-radius: 10px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: 70px;
+}
+
+#frontline {
+  font-size: 50px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  width:112px;
+}
+
+#stop, #reset {
+  background-color: #ddd;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="stopwatch">
+    <h1>Stopwatch</h1>
+    <span id="frontline">00:00:00</span>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="stop" disabled>Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+  
+  <script>
+  let startTime = 0;
+let elapsedTime = 0;
+let intervalId = null;
+
+const display = document.getElementById('frontline');
+const startBtn = document.getElementById('start');
+const stopBtn = document.getElementById('stop');
+const resetBtn = document.getElementById('reset');
+
+function updateTime() {
+  elapsedTime = Date.now() - startTime;
+
+  let seconds = Math.floor((elapsedTime / 1000) % 60);
+  let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+  let hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+  minutes = minutes < 10 ? `0${minutes}` : minutes;
+  hours = hours < 10 ? `0${hours}` : hours;
+
+  display.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+startBtn.addEventListener('click', () => {
+  if (!intervalId) {
+    startTime = Date.now();
+    intervalId = setInterval(updateTime, 10);
+    stopBtn.disabled = false;
+    startBtn.disabled = true;
+  }
+});
+
+stopBtn.addEventListener('click', () => {
+  clearInterval(intervalId);
+  intervalId = null;
+  stopBtn.disabled = true;
+  startBtn.disabled = false;
+});
+
+resetBtn.addEventListener('click', () => {
+  clearInterval(intervalId);
+  intervalId = null;
+  startTime = 0;
+  elapsedTime = 0;
+  display.textContent = '00:00:00';
+  stopBtn.disabled = true;
+  startBtn.disabled = false;
+});
+
+  
+  </script>
+</body>
+</html>
